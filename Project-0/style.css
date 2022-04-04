@@ -1,12 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic);
 
 
-.section-p1{
-padding: 40px 40px;
+
 }
 body {
   width: 100%;
-  background-color: linen;
+  background-color: rgb(209, 179, 148);
   margin: 30px;
   padding:30px;
   box-sizing: border-box;
@@ -61,8 +60,10 @@ bottom: -4px;
 left: 20px;
 
 }
+section-p1{
+  padding: 40px 40px;
 
-
+}
 h1 
 {
 font-size: 50px;

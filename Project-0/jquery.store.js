@@ -9,7 +9,7 @@
 		
 		    // Properties
 		
-			this.cartPrefix = "Furniture-"; // Prefix string to be prepended to the cart's name in the session storage
+			this.cartPrefix = "Henna-"; // Prefix string to be prepended to the cart's name in the session storage
 			this.cartName = this.cartPrefix + "cart"; // Cart name in the session storage
 			this.shippingRates = this.cartPrefix + "shipping-rates"; // Shipping rates key in the session storage
 			this.total = this.cartPrefix + "total"; // Total key in the session storage
@@ -29,9 +29,9 @@
 			this.$paypalForm = this.$element.find( "#paypal-form" ); // PayPal form
 			
 			
-			this.currency = "&euro;"; // HTML entity of the currency to be displayed in the layout
-			this.currencyString = "€"; // Currency symbol as textual string
-			this.paypalCurrency = "EUR"; // PayPal's currency code
+			this.currency = "&dollar;"; // HTML entity of the currency to be displayed in the layout
+			this.currencyString = "$"; // Currency symbol as textual string
+			this.paypalCurrency = "USD"; // PayPal's currency code
 			this.paypalBusinessEmail = "yourbusiness@email.com"; // Your Business PayPal's account email address
 			this.paypalURL = "https://www.sandbox.paypal.com/cgi-bin/webscr"; // The URL of the PayPal's form
 			
