@@ -1,8 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic);
 
 
-
-}
 body {
   width: 100%;
   background-color: rgb(209, 179, 148);
@@ -68,24 +66,24 @@ h1
 {
 font-size: 50px;
 line-height: 64px;
-color: black#222;
+color: black;
 }
 
 h2 {
 font-size: 50px;
 line-height: 64px;
-color: black#222;
+color: black;
 }
 
 h3{
 font-size: 46px;
 line-height: 54px;
-color: black#222;
+color: black;
 }
 
 h4{
 font-size: 20px;
-color: black#222;
+color: black;
 }
 
 
@@ -144,10 +142,12 @@ margin-bottom: 10px;
 }
 #feature .fe-box h6{
 padding: 9px 8px 6px 8px;
-line-height 1;
-border-radius: 4px;
-color: #088178;
-background-color: #fddde4;
+line-height 2em;
+}
+{
+border-radius: 0,0,1;
+color: 0,0,1;
+background-colo
 }
 
 
