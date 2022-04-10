@@ -5,12 +5,7 @@ import '../styles/Home.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import logger from 'use-reducer-logger';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Product from '../components/Product';
 import { Helmet } from 'react-helmet-async';
-import LoadingBox from '../components/LoadingBox';
-import MessageBox from '../components/MessageBox';
 import Slider from '../components/Slider';
 
 const reducer = (state, action) => {
@@ -60,19 +55,7 @@ function Home() {
         <h2>Best Sellers</h2>
       </div>
       <div className="bestSellers">
-      {loading ? (
-          <LoadingBox />
-        ) : error ? (
-          <MessageBox variant="danger">{error}</MessageBox>
-        ) : (
-          <Row>
-            {products.map((product) => (
-              <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
-                <Product product={product}></Product>
-              </Col>
-            ))}
-          </Row>
-        )}
+        Best Sellers section
       </div>
       <div className="sectionTitle">
         <h2>New Arrivals</h2>
