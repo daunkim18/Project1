@@ -22,6 +22,33 @@ app.post('/registeruser',(req,res)=>{
     })
 });
 
+
+app.get('/username/:user',(req,res)=>{
+
+    const user_name =req.params.user;
+    poolconn.query('SELECT * FROM users WHERE username=$1',[user_name],(error,results)=>{
+        if(error){
+            throw error;
+        }
+        res.status(200).json(results.rows);
+    })
+});
+
+app.get('/role/:roleInfo',(req,res)=>{
+    const userRole = req.params.roleInfo;
+    poolconn.query('SELECT * FROM role WHERE role=$1',[userRole],(error,results)=>{
+        if(error){
+            throw error;
+        }
+        res.status(200).json(results.rows);
+    })
+});
+
+
+
+
+
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })

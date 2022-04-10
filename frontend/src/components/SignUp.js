@@ -32,8 +32,6 @@ function SignUp() {
         role: 'user'
     };
 
-    console.log(userInfo);
-
 
         axios.post(`http://localhost:3001/registeruser`,userInfo).then((response)=>{
             setIsSubmitted(true);
@@ -70,7 +68,7 @@ function SignUp() {
                 <br/><br/>
                     Already have an account? <Link to="/login">Login here!</Link>
                 <br/><br/>
-                <button>Register</button>
+                <button id='signupBtn'>Register</button>
             </form>
         </div>
       );
