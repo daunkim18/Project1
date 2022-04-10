@@ -1,15 +1,17 @@
+
+//constructor function
 (function( $ ) {
-	$.Shop = function( element ) {
+	$.Store = function( element ) {
 		this.$element = $( element );
 		this.init();
 	};
-	
-	$.Shop.prototype = {
+	//In JavaScript, every function and object has a property named prototype by default.	
+	$.Store.prototype = {
 		init: function() {
 		
 		    // Properties
 		
-			this.cartPrefix = "Henna-"; // Prefix string to be prepended to the cart's name in the session storage
+			this.cartPrefix = "Henna"; // Prefix string to be prepended to the cart's name in the session storage
 			this.cartName = this.cartPrefix + "cart"; // Cart name in the session storage
 			this.shippingRates = this.cartPrefix + "shipping-rates"; // Shipping rates key in the session storage
 			this.total = this.cartPrefix + "total"; // Total key in the session storage
@@ -26,14 +28,14 @@
 			this.$updateCartBtn = this.$shoppingCartActions.find( "#update-cart" ); // Update cart button
 			this.$emptyCartBtn = this.$shoppingCartActions.find( "#empty-cart" ); // Empty cart button
 			this.$userDetails = this.$element.find( "#user-details-content" ); // Element that displays the user information
-			this.$paypalForm = this.$element.find( "#paypal-form" ); // PayPal form
+			//this.$paypalForm = this.$element.find( "#paypal-form" ); // PayPal form
 			
 			
 			this.currency = "&dollar;"; // HTML entity of the currency to be displayed in the layout
 			this.currencyString = "$"; // Currency symbol as textual string
 			this.paypalCurrency = "USD"; // PayPal's currency code
-			this.paypalBusinessEmail = "yourbusiness@email.com"; // Your Business PayPal's account email address
-			this.paypalURL = "https://www.sandbox.paypal.com/cgi-bin/webscr"; // The URL of the PayPal's form
+			//this.paypalBusinessEmail = "yourbusiness@email.com"; // Your Business PayPal's account email address
+			//this.paypalURL = "https://www.sandbox.paypal.com/cgi-bin/webscr"; // The URL of the PayPal's form
 			
 			// Object containing patterns for form validation
 			this.requiredFields = {
@@ -57,7 +59,7 @@
 			this.displayCart();
 			this.deleteProduct();
 			this.displayUserDetails();
-			this.populatePayPalForm();
+			//this.populatePayPalForm();
 			
 			
 		},
@@ -80,7 +82,7 @@
 		
 		// Appends the required hidden values to the PayPal's form before submitting
 		
-		populatePayPalForm: function() {
+		/*populatePayPalForm: function() {
 			var self = this;
 			if( self.$paypalForm.length ) {
 				var $form = self.$paypalForm;
@@ -117,7 +119,7 @@
 				
 				
 			}
-		},
+		},*/
 		
 		// Displays the user's information
 		
@@ -641,7 +643,7 @@
 	};
 	
 	$(function() {
-		var shop = new $.Shop( "#site" );
+		var Store = new $.Store( "#site" );
 	});
 
 })( jQuery );

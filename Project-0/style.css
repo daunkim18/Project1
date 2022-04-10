@@ -142,19 +142,15 @@ margin-bottom: 10px;
 }
 #feature .fe-box h6{
 padding: 9px 8px 6px 8px;
-line-height 2em;
-}
-{
+line-height: 2em;
 border-radius: 0,0,1;
 color: 0,0,1;
-background-colo
+
 }
 
-
-#product1{
-  text-align: center;
-}
+  
 #product1 .pro-container{
+  text-align: center;
   display: flex;
   justify-content: space-between; 
   padding-top: 25px;
@@ -205,66 +201,72 @@ background-colo
   font-weight: 500;
   color:chocolate;
 }
-footer{
+#footer{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-footer .col{
+#footer .col{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 20px;
 }
-footer .logo{
+#footer .logo{
   margin-bottom: 30px;
 }
-footer h4{
+#footer h4{
   font-size: 14px;
   padding-bottom: 20px;
 }
-footer p{
+#footer p{
   font-size: 13px;
   margin: 0 0 8px 0;
 
 }
-footer a{
+#footer a{
   font-size: 13px;
   text-decoration: none;
   color: #222;
   margin-bottom: 10px;
 }
-footer .follow{
+#footer .follow{
   margin-top: 20px;
 }
-footer .follow i{
+#footer .follow i{
  color: #465b52;
  padding-right: 4px;
  cursor: pointer; 
 }
-footer .install .row img{
+#footer .install .row img{
   border: 1px solid #465b52;
   border-radius: 6px;
 }
-footer .install img{
+#footer .install img{
   margin: 10px 0 15px 0;
 }
-footer .follow i:hover,
-footer a:hover{
+#footer .follow i:hover,
+#footer a:hover{
   color: #888178;
 }
 
-
-
-
-
-
-
-
-/*Shop Page*/
-
-/*Single Product*/
-
-/*Blog Page*/
-
-/*About Page*/
+form{
+    
+  padding-left: 10%;
+  padding-top: 10%;
+  font-size: larger;
+  
+}
+label{
+  display:inline;
+  padding-bottom: 1%;
+  color: rgb(82, 89, 189)
+  
+}input{
+  display:block;
+  position: center;
+  size: 20px
+}
+label input{
+  display: inline;
+}
