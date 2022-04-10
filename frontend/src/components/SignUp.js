@@ -29,32 +29,17 @@ function SignUp() {
         password: password.value,
         firstname: firstname.value,
         lastname : lastname.value,
+        role: 'user'
     };
 
-    axios.get(`http://localhost:3001/register/${username.value}`).then((response) => {
+    console.log(userInfo);
 
-       let userData=response.data;
-       console.log(userData);
-       if(userData){
-           setErrorMessages({ name :"username", message: errors.username});
-
-       } else{
 
         axios.post(`http://localhost:3001/registeruser`,userInfo).then((response)=>{
             setIsSubmitted(true);
 
         })
-
-       }
-
-    });
-    
-  };
-
-  const renderErrorMessage = (name) =>
-  name === errorMessages.name && (
-    <div className="error">{errorMessages.message}</div>
-  );
+    }
 
     const renderForm = (
         <div>
@@ -94,7 +79,10 @@ function SignUp() {
     <div className="app">
       <div className="login-form">
         {isSubmitted ? 
-                     <div>User Registered successfully </div>   
+                     <div>
+                         <h1>User registration successful!</h1>
+                         You may return to the <Link to="/login">login page</Link> and login.
+                    </div>   
         : renderForm}
       </div>
     </div>
