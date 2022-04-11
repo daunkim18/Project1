@@ -44,7 +44,16 @@ app.get('/role/:roleInfo',(req,res)=>{
     })
 });
 
+app.get('/storeinventory',(req,res)=>{
 
+    poolconn.query('SELECT * FROM inventory', (error,results)=>{
+        if(error){
+            throw error;
+        }
+        res.status(200).json(results.rows);
+    })
+
+});
 
 
 

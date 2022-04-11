@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import '../styles/Login.css';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import Signup from './SignUp';
-
 import axios from 'axios';
+import BooksImg from '../assets/loginBooks.png';
 
 function Login() {
 
@@ -12,8 +11,8 @@ function Login() {
     const [isAdminUser, setIsAdminUser] = useState();
   
     const errors = {
-      uname: "invalid username",
-      pass: "invalid password"
+      uname: "Invalid Username",
+      pass: "Invalid Password"
     };
   
     const handleSubmit = (event) => {
@@ -25,23 +24,23 @@ function Login() {
       let roleData = null;
 
       let username = uname.value;
-    let password = pass.value;
+      let password = pass.value;
 
       console.log(username, password);
     
-    const baseURL =`http://localhost:3001/username/${username.value}`;
+    const baseURL =`http://localhost:3001/username/${username}`;
   
     axios.get(baseURL).then((response) => {
           userData=response.data[0];
           console.log(userData);
       if (userData) {
-        if (userData.password !== password.value) {
+        if (userData.password !== password) {
           setErrorMessages({ name: "password", message: errors.password });
         } else {
             axios.get(`http://localhost:3001/role/${userData.role}`).then((res)=>{
                   roleData= res.data[0];
                   if(roleData){
-                      if(roleData.roletype == 'admin'){
+                      if(roleData.role == 'admin'){
                           setIsAdminUser(true);
                       }
                   }
@@ -62,10 +61,11 @@ function Login() {
     );
   
     const renderForm = (
-      <div>
-              <h1>Login or Sign Up</h1>
+      <div classname='loginPage'>
+        <div id='formField'>
+          <h1>Login or Sign Up</h1>
   
-              <form id='loginForm' onSubmit={handleSubmit}>
+            <form id='loginForm' onSubmit={handleSubmit}>
                   <label for='uname'>Username</label>
                   <br/>
                   <input type='email' id='uname' placeholder='name@email.com' required/>
@@ -79,15 +79,19 @@ function Login() {
                       Don't have an account? <Link to='/signup'>Sign up today!</Link>
                   <br/><br/>
                   <button className='loginBtn'>Login</button>
-              </form>
-          </div>
+            </form>
+        </div>
+        <div id='loginPic'>
+            <img src={BooksImg} alt='a stack of books'/>
+        </div>
+      </div>
     );
   
     return (
       <div className="app">
-        <div className="login-form">
+        <div className="loginForm">
           {isSubmitted ? 
-                        (isAdminUser ? <h1>Admin user is successfully logged in </h1> : <h1>User is successfully logged in</h1>)  
+                        (isAdminUser ? <h1>Admin login successful!</h1> : <h1>Login successful!</h1>)  
           : renderForm}
         </div>
       </div>

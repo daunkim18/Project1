@@ -2,10 +2,23 @@
     padding: 10px;
 }
 
+.loginBtn:hover {
+  background-color: black;
+  color: white;
+}
+
 a {
     color: #75BBA7;
   }
   
   a:hover {
     color: #7AE7C7;
+  }
+
+  #uname, #pass {
+    width: 380px;
+  }
+
+  .loginPage {
+    display: inline-block;
   }

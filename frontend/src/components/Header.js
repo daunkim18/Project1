@@ -30,9 +30,11 @@ function Header() {
             </li>
           </ul>
           <a href="/cart">
-            <button id="cartIcon">
-              <FontAwesomeIcon icon={faCartShopping} />
-            </button>
+            <Link to={"/cart"}>
+              <button id="cartIcon">
+                <FontAwesomeIcon icon={faCartShopping} />
+              </button>
+            </Link>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button id="burgerIcon">
               <FontAwesomeIcon icon={faBars} />
