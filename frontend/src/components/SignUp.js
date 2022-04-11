@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import '../styles/Signup.css';
 import Login from './Login';
+import img1 from '../assets/signupPencil.png'
 
 import axios from 'axios';
 
@@ -40,10 +41,15 @@ function SignUp() {
     }
 
     const renderForm = (
-        <div>
-            <h1>Sign Up for an account</h1>
+      <>
+        <div className="signupPage">
+          <div>
+            <img src={img1} width='280px' height='400px' id='signupPic'/>
+          </div>
 
             <form id='signUpForm' onSubmit={handleSubmit}>
+              <h1>Sign Up today</h1>
+
                 <label for='firstname'>First Name</label>
                 <br/>
                 <input type='text' id='firstname' placeholder='Jane' required />
@@ -71,6 +77,9 @@ function SignUp() {
                 <button id='signupBtn'>Register</button>
             </form>
         </div>
+
+        <div id="clear-both"></div>
+      </>
       );
     return(
 

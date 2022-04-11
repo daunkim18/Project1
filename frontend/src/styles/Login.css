@@ -19,6 +19,32 @@ a {
     width: 380px;
   }
 
-  .loginPage {
-    display: inline-block;
+  #formField {
+    width: 400px;
+    float: left;
   }
+
+  .signupPage {
+    display: inline-flex;
+  }
+
+  #signupPic {
+    float: left;
+    margin-right: 100px;
+  }
+
+  #clear-both {
+    clear: both;
+  }
+
+  @media (min-width: 800px) {
+    #signupPic {
+      display: block;
+    }
+}
+
+@media (max-width: 800px) {
+    #signupPic {
+      display: none;
+    }
+}

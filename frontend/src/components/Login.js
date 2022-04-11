@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import '../styles/Login.css';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
-import BooksImg from '../assets/loginBooks.png';
+import img1 from '../assets/loginBooks.png';
 
 function Login() {
 
@@ -61,7 +61,11 @@ function Login() {
     );
   
     const renderForm = (
+      <>
       <div classname='loginPage'>
+        <div id='loginPic'>
+            <img src={img1} alt='a stack of books' width='400px' height='400px'/>
+        </div>
         <div id='formField'>
           <h1>Login or Sign Up</h1>
   
@@ -81,10 +85,10 @@ function Login() {
                   <button className='loginBtn'>Login</button>
             </form>
         </div>
-        <div id='loginPic'>
-            <img src={BooksImg} alt='a stack of books'/>
-        </div>
       </div>
+
+    <div id='clear-both'></div>
+    </>
     );
   
     return (
