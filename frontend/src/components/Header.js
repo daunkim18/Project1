@@ -35,15 +35,19 @@ function Header() {
                 <FontAwesomeIcon icon={faCartShopping} />
               </button>
             </Link>
+          </a>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button id="burgerIcon">
               <FontAwesomeIcon icon={faBars} />
             </button>
-          </a>
+            <select>
+              <option value="login" href= "frontend/components/Login">Login</option>
+              <option value="shop">Shop</option>
+              <option value="sell">Sell</option>
+              <option value="news">News</option>
+            </select>
         </div>
       </div>
-      
-      //add drop-down menu here
 
     </>
   );

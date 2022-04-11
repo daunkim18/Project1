@@ -1,38 +1,52 @@
-import React from 'react';
+import React, {Component} from 'react'
 import Inventory from '../components/Inventory'
 import axios from 'axios';
 
-function Shop() {
+export default class Shop extends Component {
 
-    const baseURL =`http://localhost:3001/storeinventory`;
+    constructor(props) {
+        super(props);
+        this.state = {
+            inventoryData: []
+        };
+    }
 
-    let inventoryData;
+    getShopData() {
+            axios.get(`http://localhost:3001/storeinventory`).then((response) => {
+                const data = response.data
+                console.log(data)
+                const shopData = data.map(book =>
+                    <div>
+                    <p>{book.book_name}</p>
+                    <p>{book.authorname}</p>
+                    <p>{book.stock}</p>
+                    <p>{book.price}</p>
+                    </div>
+                    )
 
-    axios.get(baseURL).then((response) => {
-         inventoryData=response.data;
-         console.log(inventoryData);
-    })
-    
+                    this.setState({
+                        shopData
+                    })
+
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+
+    }
+    componentDidMount(){
+        this.getShopData()
+    }
+
+    render() {
     return (
-
-        <div classname='shopSection'>
+            <div classname='shopSection'>
             <center>
                 <h1>Find out what's waiting for you today!</h1>
                 <p>Puruse our wide variety of books! We are always restocking and buying what our customers want!</p>
-            </center>
-
-            <ul>
-                {inventoryData.map((item) =>(
-                    <li key={inventoryData.bookid}>
-                    {inventoryData.book_name} is ${inventoryData.price}
-                     </li>
-                ))}
-                
-            </ul>
-            
-        </div>
+            </center> 
+            {this.state.shopData}
+            </div>
     )
-
+    }
 }
-
-export default Shop;
