@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import '../styles/Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function Header() {
+
+  const [openBurger, setOpenBurger] = useState(false);
 
   return (
     <>
@@ -37,19 +39,30 @@ function Header() {
             </Link>
           </a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <div id='burgerMenu'>
-              <button id="burgerIcon">
+              <button id="burgerIcon" onClick={() => setOpenBurger(!openBurger)}>
                 <FontAwesomeIcon icon={faBars} />
               </button>
-              <select>
-                <option value="login">Login</option>
-                <option value="shop">Shop</option>
-                <option value="sell">Sell</option>
-                <option value="news">News</option>
-              </select>
-            </div>
+
+              
         </div>
+        
       </div>
+
+      {openBurger && <ul className="navLinksBurger">
+              <li>
+                <Link to={"/"}>Home</Link>
+              </li>
+              <li>
+                <Link to={"/login"}>Login</Link>
+              </li>
+              <li>
+                <Link to={"/shop"}>Shop</Link>
+              </li>
+              <li>
+                <Link to={"/sell"}>Sell</Link>
+              </li>
+      </ul>
+    }
 
     </>
   );

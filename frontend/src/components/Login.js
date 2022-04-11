@@ -27,6 +27,8 @@ function Login() {
       let password = pass.value;
 
       console.log(username, password);
+
+      sessionStorage.setItem('currentUser', username);
     
     const baseURL =`http://localhost:3001/username/${username}`;
   
