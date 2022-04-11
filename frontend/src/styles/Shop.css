@@ -1,0 +1,22 @@
+#bookCard {
+    border: 1px solid black;
+    padding: 20px;
+    width: 300px;
+    float: left;
+    margin: 10px;
+}
+
+#addCartBtn {
+    padding: 10px;
+    color: white;
+    background-color:  #6C809A;
+    border: none;
+}
+
+#addCartBtn:hover {
+    background-color: black;
+}
+
+#clear-both {
+    clear: both;
+  }

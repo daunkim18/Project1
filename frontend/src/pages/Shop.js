@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios';
 import '../styles/Shop.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 export default class Shop extends Component {
 
@@ -16,14 +18,18 @@ export default class Shop extends Component {
                 const data = response.data
                 console.log(data)
                 const shopData = data.map(book =>
-                    <div id='shopInventory'>
-                        <h3>{book.book_name}</h3>
-                        <h5>{book.authorname}</h5>
-                        ${book.price}
-                        <br/>
-                        Stock: {book.stock}
-                        <br/>
-                        <button type='submit' id='addCartBtn'>Add to Cart</button>
+                    <div classname='shopInventory'>
+                        <div id='bookCard'>
+                            <img src={book.book_img} width=
+                            '100%' height='100%'/>
+                            <h3>{book.book_name}</h3>
+                            <h5>By {book.author_name}</h5>
+                            ${book.price}
+                            <br/>
+                            <b>Stock:</b> {book.stock}
+                            <br/>
+                            <button type='submit' id='addCartBtn'><FontAwesomeIcon icon={faCartShopping} /> Add to Cart</button>
+                        </div>
                     </div>
                     )
 
@@ -43,6 +49,7 @@ export default class Shop extends Component {
 
     render() {
     return (
+        <>
             <div classname='shopSection'>
             <center>
                 <h1>Find out what's waiting for you today!</h1>
@@ -50,6 +57,8 @@ export default class Shop extends Component {
             </center> 
             {this.state.shopData}
             </div>
-    )
+            <div id='clear-both'></div>
+            </>
+      )
     }
 }

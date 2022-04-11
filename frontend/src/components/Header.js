@@ -37,15 +37,17 @@ function Header() {
             </Link>
           </a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <button id="burgerIcon">
-              <FontAwesomeIcon icon={faBars} />
-            </button>
-            <select>
-              <option value="login" href= "frontend/components/Login">Login</option>
-              <option value="shop">Shop</option>
-              <option value="sell">Sell</option>
-              <option value="news">News</option>
-            </select>
+            <div id='burgerMenu'>
+              <button id="burgerIcon">
+                <FontAwesomeIcon icon={faBars} />
+              </button>
+              <select>
+                <option value="login">Login</option>
+                <option value="shop">Shop</option>
+                <option value="sell">Sell</option>
+                <option value="news">News</option>
+              </select>
+            </div>
         </div>
       </div>
 
