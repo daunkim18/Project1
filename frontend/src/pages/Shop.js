@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import Inventory from '../components/Inventory'
 import axios from 'axios';
+import '../styles/Shop.css';
 
 export default class Shop extends Component {
 
@@ -16,11 +16,14 @@ export default class Shop extends Component {
                 const data = response.data
                 console.log(data)
                 const shopData = data.map(book =>
-                    <div>
-                    <p>{book.book_name}</p>
-                    <p>{book.authorname}</p>
-                    <p>{book.stock}</p>
-                    <p>{book.price}</p>
+                    <div id='shopInventory'>
+                        <h3>{book.book_name}</h3>
+                        <h5>{book.authorname}</h5>
+                        ${book.price}
+                        <br/>
+                        Stock: {book.stock}
+                        <br/>
+                        <button type='submit' id='addCartBtn'>Add to Cart</button>
                     </div>
                     )
 
