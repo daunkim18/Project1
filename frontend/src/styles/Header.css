@@ -33,6 +33,13 @@
     margin-right: auto;
     display: flex;
     color: white;
+    cursor: pointer;
+}
+
+#welcomeBar {
+    font-size: 26px;
+    color: white;
+    display: inline;
 }
 
 .navLinks {

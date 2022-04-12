@@ -9,12 +9,22 @@ function Header() {
 
   const [openBurger, setOpenBurger] = useState(false);
 
+  var loggedinuser = sessionStorage.getItem('currentUser'); 
+    const innerHTML = {__html: 'Welcome, ' + loggedinuser}
+
+  function clearSess() {
+    sessionStorage.clear();
+  }
+
   return (
     <>
+    
       <div className="headerBar">
         <div className="siteName">
-          <h1>Revature's Digest</h1>
+          <Link to={"/"}><h1>Revature's Digest</h1></Link>
         </div>
+
+        <div id='welcomeBar' dangerouslySetInnerHTML={innerHTML} />
 
         <div className="navBar">
           <ul className="navLinks">
@@ -29,6 +39,12 @@ function Header() {
             </li>
             <li>
               <Link to={"/login"}>Login</Link>
+            </li>
+            <li>
+              <Link to={"/profile"} className='profileLink'>Profile</Link>
+            </li>
+            <li>
+              <Link to={"/logout"} onClick={clearSess()} className='logoutLink'>Logout</Link>
             </li>
           </ul>
           <a href="/cart">
@@ -50,16 +66,22 @@ function Header() {
 
       {openBurger && <ul className="navLinksBurger">
               <li>
-                <Link to={"/"}>Home</Link>
+                <Link to={"/"} onClick={() => setOpenBurger(!openBurger)}>Home</Link>
               </li>
               <li>
-                <Link to={"/login"}>Login</Link>
+                <Link to={"/login"} onClick={() => setOpenBurger(!openBurger)}>Login</Link>
               </li>
               <li>
-                <Link to={"/shop"}>Shop</Link>
+                <Link to={"/profile"} onClick={() => setOpenBurger(!openBurger)}  className='profileLink'>Profile</Link>
               </li>
               <li>
-                <Link to={"/sell"}>Sell</Link>
+                <Link to={"/shop"} onClick={() => setOpenBurger(!openBurger)}>Shop</Link>
+              </li>
+              <li>
+                <Link to={"/sell"} onClick={() => setOpenBurger(!openBurger)}>Sell</Link>
+              </li>
+              <li>
+                <Link to={"/logout"} onClick={clearSess()} className='logoutLink'>Logout</Link>
               </li>
       </ul>
     }

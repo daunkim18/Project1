@@ -55,6 +55,18 @@ app.get('/storeinventory',(req,res)=>{
 
 });
 
+app.post('/shoporder/:username/:book',(req,res)=>{
+    const book = req.params.book;
+    const username = req.params.username;
+    poolconn.query('INSERT INTO orders (username, orders) VALUES ($1,$2)', [username, book], (error,results) => {
+        if(error){
+            throw error;
+        }
+        res.status(201).send(`Book Added to Order: ${book}`);
+    })
+});
+
+
 
 
 

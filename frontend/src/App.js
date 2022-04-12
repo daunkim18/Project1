@@ -11,6 +11,7 @@ import Signup from './components/SignUp';
 import Shop from './pages/Shop';
 import Cart from './pages/Cart';
 import Sell from './pages/Sell';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -22,10 +23,12 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/logout" element={<Home />} />
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/shop' element={<Shop />} />
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/sell' element={<Sell />} />
+                <Route path='/profile' eleemnt={<Profile />} />
               </Routes>
             </Container>
           </main>
