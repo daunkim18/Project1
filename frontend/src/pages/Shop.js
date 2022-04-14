@@ -17,6 +17,7 @@ export default class Shop extends Component {
             axios.get(`http://localhost:3001/storeinventory`).then((response) => {
                 const data = response.data
                 console.log(data)
+                let cartItems = []
                 const shopData = data.map(book =>
                     <div classname='shopInventory'>
                         <div id='bookCard'>
@@ -28,7 +29,7 @@ export default class Shop extends Component {
                             <br/>
                             <b>Stock:</b> {book.stock}
                             <br/>
-                            <button type='submit' id='addCartBtn'><FontAwesomeIcon icon={faCartShopping} /> Add to Cart</button>
+                            <button type='submit' id={book.book_name} onClick={function cart(){ cartItems.push(book.book_name); localStorage.setItem("currentCart", JSON.stringify(cartItems))}} FontAwesomeIcon icon={faCartShopping}> Add to Cart</button>
                         </div>
                     </div>
                     )
@@ -36,12 +37,10 @@ export default class Shop extends Component {
                     this.setState({
                         shopData
                     })
-
             })
             .catch((error) => {
                 console.log(error)
             })
-
     }
     componentDidMount(){
         this.getShopData()
