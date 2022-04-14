@@ -16,9 +16,10 @@ app.post('/registeruser',(req,res)=>{
     let {username,password,firstname, lastname,role} = req.body;
     poolconn.query('INSERT INTO users (username,password,firstname, lastname, role) VALUES ($1,$2,$3,$4,$5)', [username,password,firstname,lastname,role], (error,results) => {
         if(error){
-            throw error;
+            res.sendStatus(500);
+            return;
         }
-        res.status(201).send(`User added with Username: ${username}`);
+        return res.status(201).send(`User added with Username: ${username}`);
     })
 });
 
@@ -28,9 +29,10 @@ app.get('/username/:user',(req,res)=>{
     const user_name =req.params.user;
     poolconn.query('SELECT * FROM users WHERE username=$1',[user_name],(error,results)=>{
         if(error){
-            throw error;
+            res.sendStatus(500);
+            return;
         }
-        res.status(200).json(results.rows);
+        return res.status(200).json(results.rows);
     })
 });
 
@@ -38,9 +40,10 @@ app.get('/role/:roleInfo',(req,res)=>{
     const userRole = req.params.roleInfo;
     poolconn.query('SELECT * FROM role WHERE role=$1',[userRole],(error,results)=>{
         if(error){
-            throw error;
+            res.sendStatus(500);
+            return;
         }
-        res.status(200).json(results.rows);
+        return res.status(200).json(results.rows);
     })
 });
 
@@ -48,9 +51,10 @@ app.get('/storeinventory',(req,res)=>{
 
     poolconn.query('SELECT * FROM inventory', (error,results)=>{
         if(error){
-            throw error;
+            res.sendStatus(500);
+            return;
         }
-        res.status(200).json(results.rows);
+        return res.status(200).json(results.rows);
     })
 
 });
@@ -60,14 +64,12 @@ app.post('/shoporder/:username/:book',(req,res)=>{
     const username = req.params.username;
     poolconn.query('INSERT INTO orders (username, orders) VALUES ($1,$2)', [username, book], (error,results) => {
         if(error){
-            throw error;
+            res.sendStatus(500);
+            return;
         }
-        res.status(201).send(`Book Added to Order: ${book}`);
+        return res.status(201).send(`Book Added to Order: ${book}`);
     })
 });
-
-
-
 
 
 app.listen(port, () => {

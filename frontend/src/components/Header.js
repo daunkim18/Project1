@@ -10,10 +10,12 @@ function Header() {
   const [openBurger, setOpenBurger] = useState(false);
 
   var loggedinuser = sessionStorage.getItem('currentUser'); 
-    const innerHTML = {__html: 'Welcome, ' + loggedinuser}
+  
+  const innerHTML = {__html: 'Welcome, ' + loggedinuser}
 
   function clearSess() {
     sessionStorage.clear();
+    window.location.reload();
   }
 
   return (
@@ -44,7 +46,7 @@ function Header() {
               <Link to={"/profile"} className='profileLink'>Profile</Link>
             </li>
             <li>
-              <Link to={"/logout"} onClick={clearSess()} className='logoutLink'>Logout</Link>
+              <Link to={"/logout"} onClick={() =>{clearSess()}} className='logoutLink'>Logout</Link>
             </li>
           </ul>
           <a href="/cart">
@@ -81,7 +83,7 @@ function Header() {
                 <Link to={"/sell"} onClick={() => setOpenBurger(!openBurger)}>Sell</Link>
               </li>
               <li>
-                <Link to={"/logout"} onClick={clearSess()} className='logoutLink'>Logout</Link>
+                <Link to={"/logout"}  onClick={() =>{clearSess()}} className='logoutLink'>Logout</Link>
               </li>
       </ul>
     }

@@ -6,14 +6,14 @@
     margin: 10px;
 }
 
-#addCartBtn {
+.addCartBtn {
     padding: 10px;
     color: white;
     background-color:  #6C809A;
     border: none;
 }
 
-#addCartBtn:hover {
+.addCartBtn:hover {
     background-color: black;
 }
 

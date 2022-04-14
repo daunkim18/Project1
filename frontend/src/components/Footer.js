@@ -39,11 +39,11 @@ function Footer() {
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div className='extraSection'>
-                <h3>Third Section</h3>
+                <h3>Connect</h3>
                 <ul>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                    <li>List Item</li>
+                    <li>YouTube</li>
+                    <li>Instagram</li>
+                    <li>TikTok</li>
                 </ul>
             </div>
         </div>
