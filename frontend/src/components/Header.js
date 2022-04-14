@@ -49,13 +49,11 @@ function Header() {
               <Link to={"/logout"} onClick={() =>{clearSess()}} className='logoutLink'>Logout</Link>
             </li>
           </ul>
-          <a href="/cart">
             <Link to={"/cart"}>
               <button id="cartIcon">
                 <FontAwesomeIcon icon={faCartShopping} />
               </button>
             </Link>
-          </a>
             &nbsp;&nbsp;&nbsp;&nbsp;
               <button id="burgerIcon" onClick={() => setOpenBurger(!openBurger)}>
                 <FontAwesomeIcon icon={faBars} />

@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect} from 'react'
+import React, {Component} from 'react'
 import axios from 'axios';
 import '../styles/Shop.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,8 +16,8 @@ export default class Shop extends Component {
     getShopData() {
         axios.get(`http://localhost:3001/storeinventory`).then((response) => {
             const data = response.data
-            
-            let cartItems = []
+
+            let cartItems = [];
             
             const shopData = data.map(book =>
                 <div classname='shopInventory'>
@@ -30,7 +30,14 @@ export default class Shop extends Component {
                         <br/>
                         <b>Stock:</b> {book.stock}
                         <br/>
-                        <button type='submit' className='addCartBtn' id={book.book_name} onClick={function cart(){ cartItems.push(book.book_name); localStorage.setItem("currentCart", cartItems)}}><FontAwesomeIcon icon={faCartShopping}/> Add to Cart</button>
+                        <button type='submit' className='addCartBtn' id={book.book_name} onClick={function cart()
+                            { 
+                                cartItems.push(book.book_name + ", $" + book.price);
+                                localStorage.setItem("currentCart", cartItems);
+
+                            }
+                        }>
+                            <FontAwesomeIcon icon={faCartShopping}/> Add to Cart</button>
                     </div>
                 </div>
                 )
@@ -38,15 +45,18 @@ export default class Shop extends Component {
                 this.setState({
                     shopData
                 })
-        })
+            })
+
+            
         .catch((error) => {
             console.log(error)
         })
-}
+    }
     componentDidMount(){
         this.getShopData()
-    }
 
+}
+    
     render() {
     return (
         <>

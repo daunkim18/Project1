@@ -1,0 +1,31 @@
+#email, #phoneNum, #bookTitle, #bookAuthor, #imageUpload {
+    width: 380px;
+}
+
+#formArea {
+    display: flex;
+    justify-content: center;
+    float: left;
+}
+
+#clear-both {
+    clear: both;
+}
+
+#imgArea {
+    float: left;
+    display: flex;
+    margin-right: 100px;
+}
+
+@media (min-width: 800px) {
+    #imgArea {
+      display: block;
+    }
+}
+
+@media (max-width: 800px) {
+    #imgArea {
+      display: none;
+    }
+}
