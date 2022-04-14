@@ -32,8 +32,7 @@ export default class Shop extends Component {
                         <br/>
                         <button type='submit' className='addCartBtn' id={book.book_name} onClick={function cart()
                             { 
-                                cartItems.push(book.book_name + ", $" + book.price);
-                                localStorage.setItem("currentCart", cartItems);
+                                cartItems.push(book.book_name); localStorage.setItem("currentCart", JSON.stringify(cartItems));
 
                             }
                         }>

@@ -2,19 +2,18 @@ import React from 'react';
 
 function Profile() {
 
+    var loggedinuser = sessionStorage.getItem('currentUser'); 
+    const innerHTML = {__html: 'Welcome, ' + loggedinuser}
+
     return(
         <>
         <div id='profileArea'>
 
-            <h1>Profile</h1>
+            <div id='welcomeBar' dangerouslySetInnerHTML={innerHTML}></div>
 
-            <b>First Name: </b>
-            <br/>
-            <b>Last Name: </b>
+            <br/><br/><br/>
 
-            <br/>
-
-            <h1>Past Orders</h1>
+            <h1>Order History</h1>
 
         </div>
         </>

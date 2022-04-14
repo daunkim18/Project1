@@ -9,10 +9,6 @@ function Header() {
 
   const [openBurger, setOpenBurger] = useState(false);
 
-  var loggedinuser = sessionStorage.getItem('currentUser'); 
-  
-  const innerHTML = {__html: 'Welcome, ' + loggedinuser}
-
   function clearSess() {
     sessionStorage.clear();
     window.location.reload();
@@ -25,8 +21,6 @@ function Header() {
         <div className="siteName">
           <Link to={"/"}><h1>Revature's Digest</h1></Link>
         </div>
-
-        <div id='welcomeBar' dangerouslySetInnerHTML={innerHTML} />
 
         <div className="navBar">
           <ul className="navLinks">

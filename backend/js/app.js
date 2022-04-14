@@ -71,6 +71,28 @@ app.post('/shoporder/:username/:book',(req,res)=>{
     })
 });
 
+app.get('/cart/:book',(req,res)=>{
+    const book = req.params.book;
+    poolconn.query('SELECT * FROM inventory WHERE book_name=$1',[book],(error,results)=>{
+        if(error){
+            res.sendStatus(500);
+            return;
+        }
+            return res.status(200).json(results.rows);
+        })
+});
+
+app.post('/checkout',(req,res)=>{
+    let {username, order, date} = req.body;
+    poolconn.query('INSERT INTO orders (username, orders,order_date) VALUES ($1,$2,$3)', [username, order,date], (error,results) => {
+        if(error){
+            res.sendStatus(500);
+            return;
+        }
+        return res.status(200).json(results.rows);
+    })
+});
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
