@@ -23,10 +23,26 @@ function Profile() {
         })
     }, []);
 
+    const OrderItem = ({
+        orderid,
+        username, 
+        orders,
+        order_date
+      }) => (
+        <div>
+            <h1>{username}</h1>
+            <h3>{orderid}</h3>
+            {orders}
+            <br/>
+            <b>Order Date:</b> {order_date}
+            <br/>
+        </div>
+    );
+
     useEffect(() => {
         axios.get(`http://localhost:3001/profileorders/${currentuser}`).then((response) => {
               let orderData=response.data;
-              //setOrders(orderData);
+              setOrders(orderData)
               console.log(orderData);
             })
             .catch((error) => {
@@ -49,6 +65,9 @@ function Profile() {
             <br/>
 
             <h1>Past Orders:</h1>
+            <div>
+            {orders.map(orders => <OrderItem key={orders.orderid} {...orders} />)}
+            </div>
 
         </div>
         </>
