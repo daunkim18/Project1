@@ -1,0 +1,43 @@
+.marketSection {
+    margin: auto;
+    padding: 15px;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+#email, #phoneNum, #bookTitle, #bookAuthor, #imageUpload {
+    width: 380px;
+}
+
+#submitBtn {
+    padding: 0px 15px;
+}
+
+#formArea {
+    display: flex;
+    justify-content: center;
+    float: left;
+}
+
+#clear-both {
+    clear: both;
+}
+
+#imgArea {
+    float: left;
+    display: flex;
+    margin-right: 100px;
+}
+
+@media (min-width: 800px) {
+    #imgArea {
+      display: block;
+    }
+}
+
+@media (max-width: 800px) {
+    #imgArea {
+      display: none;
+    }
+}
