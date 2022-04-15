@@ -9,7 +9,11 @@ function Cart() {
     const [cart, setCart] = useState([]);
 
     let currentcart;
+    let currentuser;
     currentcart = JSON.parse(localStorage.getItem("currentCart"));
+    currentuser = JSON.parse(sessionStorage.getItem('currentUser')); 
+    let d = new Date();
+    let date = d.toLocaleString();
 
     const BookItem = ({
         book_name,
@@ -43,21 +47,46 @@ function Cart() {
         })
     )}, [currentcart.length]);
 
-    console.log(cart);
+    console.log(currentuser);
+    console.log(currentcart);
+    console.log(date);
 
+    let orderData ={
+        username: currentuser,
+        order: currentcart,
+        date: date
+    };
+
+    const submitButton = (event) => {
+        axios.post(`http://localhost:3001/checkout`,orderData).then((response) => {
+            
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+
+    console.log(cart);
     return (
         <>
-            <div classname='shopSection'>
-            <center>
-                <h1>Find out what's waiting for you today!</h1>
-                <p>Puruse our wide variety of books! We are always restocking and buying what our customers want!</p>
-            </center>
-            <div>
-                {cart.map(cart => <BookItem key={cart.book_name} {...cart} />)}
+        <div id='cartSpace'>
+            <h1>Cart Items</h1>
+
+            <div className='cartBox'>
             </div>
-            </div>
-            <div id='clear-both'></div>
-            </>
+
+        <div className='cartSection'>
+            <h1>Cart Order</h1>
+                <div>
+                    {cart.map(cart => <BookItem key={cart.book_name} {...cart} />)}
+                </div>
+            <br/>
+            <button className='checkoutBtn' onClick={submitButton}><FontAwesomeIcon icon={faCartShopping}/> Checkout</button>
+        </div>
+
+        <div id='clear-both'></div>
+        </div>
+        </>
       )
 }
 

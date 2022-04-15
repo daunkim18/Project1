@@ -28,7 +28,7 @@ function Login() {
 
       console.log(username, password);
 
-      sessionStorage.setItem('currentUser', username);
+      sessionStorage.setItem('currentUser', JSON.stringify(username));
     
     const baseURL =`http://localhost:3001/username/${username}`;
   

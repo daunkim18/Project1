@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
 
 //http://localhost:3001/registeruser
 app.post('/registeruser',(req,res)=>{
-    let {username,password,firstname, lastname,role} = req.body;
+    let {username,password,firstname,lastname,role} = req.body;
     poolconn.query('INSERT INTO users (username,password,firstname, lastname, role) VALUES ($1,$2,$3,$4,$5)', [username,password,firstname,lastname,role], (error,results) => {
         if(error){
             res.sendStatus(500);
@@ -80,6 +80,30 @@ app.get('/cart/:book',(req,res)=>{
         }
             return res.status(200).json(results.rows);
         })
+});
+
+app.post('/checkout',(req,res)=>{
+    let {username, order, date} = req.body;
+    console.log(req.body);
+    poolconn.query('INSERT INTO orders (username, orders, order_date) VALUES ($1,$2,$3)', [username, order, date], (error,results) => {
+        if(error){
+            res.sendStatus(500);
+            return;
+        }
+        return res.status(201).send(`Order Placed!`);
+    })
+});
+
+app.get('/profileorders/:username',(req,res)=>{
+    const username = req.params.username;
+    poolconn.query('SELECT * FROM orders WHERE username=$1',[username],(error,results)=>{
+        if(error){
+            res.sendStatus(500);
+            return;
+        }
+        return res.status(200).json(results.rows);
+    })
+
 });
 
 

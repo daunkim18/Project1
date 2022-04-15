@@ -36,7 +36,6 @@ function SignUp() {
 
         axios.post(`http://localhost:3001/registeruser`,userInfo).then((response)=>{
             setIsSubmitted(true);
-
         })
     }
 
