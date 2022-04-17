@@ -118,6 +118,18 @@ app.post('/sellbooks',(req,res)=>{
     })
 });
 
+app.post('/contactus',(req,res)=>{
+    let {email, phone, inquiry, text} = req.body;
+    console.log(req.body);
+    poolconn.query('INSERT INTO contact (email, phone_number, inquiry_type, inquiry_message) VALUES ($1,$2,$3,$4)', [email, phone, inquiry, text], (error,results) => {
+        if(error){
+            res.sendStatus(500);
+            return;
+        }
+        return res.status(201).send(`Success`);
+    })
+});
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })

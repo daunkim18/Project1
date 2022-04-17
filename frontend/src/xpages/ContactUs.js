@@ -1,10 +1,38 @@
-import React from 'react';
-import './Styles.css';
-import img1 from '../assets/contactForm.png';
+import React, { useState} from "react";
+import '../styles/Sell.css';
+import img1 from '../assets/bookstore.png';
+import axios from 'axios';
 
 function Contact() {
-    return(
-        <div className='mainSpace'>
+
+    const [contactSuccess, setSubmit] = useState();
+
+    const handleSubmit = (event) => {
+
+        event.preventDefault();
+        
+        var { email, phoneNum, inquiryReason, textField } = document.forms[0];
+    
+        let contactInfo ={
+            email: email.value,
+            phone: phoneNum.value,
+            inquiry: inquiryReason.value,
+            text: textField.value
+        };
+
+        console.log(contactInfo);
+    
+            axios.post(`http://localhost:3001/contactus`,contactInfo).then((response)=>{
+                setSubmit(true);
+            })
+            .catch((error) => {
+                console.log(error.response.data)
+            })
+    }
+
+    const contactForm = (
+        <>
+          <div className='mainSpace'>
             <center>
                 <h1>Contact Us</h1>
                 Questions or concerns? Want a book that we don't have? Go ahead and fill out the following form and we will get back to you within 1-3 business days!
@@ -16,7 +44,7 @@ function Contact() {
             </div>
 
             <div className='contactForm'>
-                <form id='contactUs'>
+                <form id='contactUs'onSubmit={handleSubmit}>
                 <label for='email'>Email</label>
                     <br/>
                     <input type='email' name='email' id='email' placeholder='name@email.com' required/>
@@ -30,15 +58,15 @@ function Contact() {
                     <label for='inquiryReason'>Reason for Inquiry</label>
                     <br/>
                     <select name="inquiryReason" id="inquiryReason" required>
-                        <option value="request">Request a book</option>
-                        <option value="complaint">File a complaint</option>
-                        <option value="inquiry">Questions and Concerns</option>
-                        <option value='career'>Job application</option>
-                        <option value="other">Other reason</option>
+                        <option value="Request">Request a Book</option>
+                        <option value="Complaint">File a Complaint</option>
+                        <option value="Inquiry">Questions and Concerns</option>
+                        <option value="Career">Job Application</option>
+                        <option value="Other">Other Reason</option>
                     </select>
                     <br/>
 
-                    <label for='textField'>Enter message here...</label>
+                    <label for='textField'>Enter Message Here...</label>
                     <br/>
                     <textarea name='textField' rows='5' cols='50' required></textarea>
 
@@ -49,6 +77,19 @@ function Contact() {
             </div>
             <div className='clear-both'/>
         </div>
+        </>
+        );
+
+    return (
+        <>
+        <div>
+        <center>
+        {contactSuccess ? 
+                        (<h1>Thank you your inquiry. We will contact you by email as soon as possible!</h1>)  
+        : contactForm}
+        </center>
+        </div>
+        </>
     )
 }
 
