@@ -45,7 +45,7 @@ function Cart() {
     currentcart.map((book) =>
         axios.get(`http://localhost:3001/cart/${book}`).then((response) => {
             const data = response.data
-            setCart(data)
+            setCart((cart) => cart.concat(data))
         })
         .catch((error) => {
             console.log(error)
