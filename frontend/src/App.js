@@ -11,6 +11,7 @@ import Shop from './pages/Shop';
 import Cart from './pages/Cart';
 import Sell from './pages/Sell';
 import Profile from './pages/Profile';
+import Admin from './pages/Admin';
 
 
 import FAQ from './xpages/FAQ';
@@ -28,6 +29,7 @@ function App() {
           <Header />
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/admin" element={<Admin />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Home />} />
                 <Route path='/signup' element={<Signup />} />

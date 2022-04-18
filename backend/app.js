@@ -130,6 +130,42 @@ app.post('/contactus',(req,res)=>{
     })
 });
 
+app.get('/adminorders',(req,res)=>{
+
+    poolconn.query('SELECT * FROM orders', (error,results)=>{
+        if(error){
+            res.sendStatus(500);
+            return;
+        }
+        return res.status(200).json(results.rows);
+    })
+
+});
+
+app.get('/admincontact',(req,res)=>{
+
+    poolconn.query('SELECT * FROM contact', (error,results)=>{
+        if(error){
+            res.sendStatus(500);
+            return;
+        }
+        return res.status(200).json(results.rows);
+    })
+
+});
+
+app.get('/adminsales',(req,res)=>{
+
+    poolconn.query('SELECT * FROM sales_requests', (error,results)=>{
+        if(error){
+            res.sendStatus(500);
+            return;
+        }
+        return res.status(200).json(results.rows);
+    })
+
+});
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })

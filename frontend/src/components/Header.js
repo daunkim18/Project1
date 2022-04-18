@@ -18,9 +18,13 @@ function Header() {
     window.alert('You have been successfully logged out.');
   }
 
+  const hideAdmin = (
+    <>
+    </>
+  );
+  
   return (
     <>
-    
       <div className="headerBar">
         <div className="siteName">
           <Link to={"/"}><h1>Revature's Digest</h1></Link>
@@ -28,6 +32,13 @@ function Header() {
 
         <div className="navBar">
           <ul className="navLinks">
+          {loggedinuser == "admin@admin.com" ? 
+                    <>
+                    <li>
+                    <Link to={"/admin"}>Admin Controls</Link>
+                    </li>
+                    </>
+          : hideAdmin}
             <li>
               <Link to={"/"}>Home</Link>
             </li>

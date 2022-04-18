@@ -26,7 +26,7 @@ function Login() {
       let username = uname.value;
       let password = pass.value;
 
-      sessionStorage.setItem('currentUser', username);
+      sessionStorage.setItem('currentUser', JSON.stringify(username));
     
     const baseURL =`http://localhost:3001/username/${username}`;
   
@@ -37,16 +37,9 @@ function Login() {
         if (userData.password !== password) {
           setErrorMessages({ name: "password", message: errors.password });
         } else {
-            axios.get(`http://localhost:3001/role/${userData.role}`).then((res)=>{
-                  roleData= res.data[0];
-                  if(roleData){
-                      if(roleData.role == 'admin'){
-                          setIsAdminUser(true);
-                      }
-                  }
-                  
-            })
-           
+            if(userData.role == "admin"){
+              setIsAdminUser(true);
+            }
             setIsSubmitted(true);
         }
       } else {
