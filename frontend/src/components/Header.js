@@ -10,6 +10,9 @@ function Header() {
   const [openBurger, setOpenBurger] = useState(false);
   const [profile, setProfile] = useState();
   const [cart, setCart] = useState();
+  const [login, setLogin] = useState();
+  const [logout, setLogout] = useState();
+  const [shop, setShop] = useState();
 
   var loggedinuser = JSON.parse(sessionStorage.getItem('currentUser')); 
   console.log(loggedinuser);
@@ -42,27 +45,66 @@ function Header() {
     </a>
   );
 
+  const loginLink = (
+    <Link to={"/login"}>Login</Link>
+  );
+
+  const logoutLink = (
+    <Link to={"/"} onClick={clearSess} className='logoutLink'>Logout</Link>
+  );
+
+  const shopLink = (
+    <Link to={"/shop"}>Shop</Link>
+  );
+
   
   useEffect(() => {
-  if (loggedinuser == "admin@admin.com") {
+    if (loggedinuser == "admin@admin.com") {
       setCart(hideItem);
-  }
-  else if (loggedinuser == "no user"){
+    }
+    else if (loggedinuser == "no user"){
       setCart(hideItem);
-  } else {
+    } else {
       setCart(cartLink);
-  }
+    }
   }, []);
 
   useEffect(() => {
-  if (loggedinuser == "admin@admin.com") {
+    if (loggedinuser == "admin@admin.com") {
+      setLogin(hideItem);
+    }
+    else if (loggedinuser !== "no user"){
+      setLogin(hideItem);
+    } else {
+      setLogin(loginLink);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (loggedinuser == "admin@admin.com") {
     setProfile(hideItem);
-  }
-  else if (loggedinuser == "no user"){
+    }
+    else if (loggedinuser == "no user"){
     setProfile(hideItem);
-  } else {
+    } else {
     setProfile(profileLink);
-  }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (loggedinuser == "no user"){
+    setLogout(hideItem);
+    } else {
+    setLogout(logoutLink);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (loggedinuser == "no user"){
+    setShop(hideItem);
+    } else {
+    setShop(shopLink);
+    }
   }, []);
  
   return (
@@ -85,7 +127,7 @@ function Header() {
               <Link to={"/"}>Home</Link>
             </li>
             <li>
-              <Link to={"/shop"}>Shop</Link>
+              {shop}
             </li>
             {loggedinuser === "admin@admin.com" ? 
                     <li>
@@ -93,13 +135,13 @@ function Header() {
                     </li>
             : hideItem}
             <li>
-              <Link to={"/login"}>Login</Link>
+              {login}
             </li>
             <li>
               {profile}
             </li>
             <li>
-              <Link to={"/"} onClick={clearSess} className='logoutLink'>Logout</Link>
+              {logout}
             </li>
           </ul>
             {cart}
