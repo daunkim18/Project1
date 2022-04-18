@@ -21,7 +21,6 @@ function Login() {
   
       var { uname, pass } = document.forms[0];
       let userData = null;
-      let roleData = null;
 
       let username = uname.value;
       let password = pass.value;

@@ -3,6 +3,14 @@ import '../styles/Home.css';
 import Slider1 from '../components/Slider1';
 
 function Home() {
+
+  let noLogin = "no user";
+
+  if (sessionStorage.getItem('currentUser') == null ){
+    sessionStorage.setItem('currentUser', JSON.stringify(noLogin));
+  }
+  
+
   return (
     <div id='homePage'>
 

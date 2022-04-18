@@ -9,7 +9,7 @@ function Profile() {
     const [lastname, setLast] = useState('');
     const [orders, setOrders] = useState([]);
 
-    let currentuser = sessionStorage.getItem('currentUser'); 
+    let currentuser = JSON.parse(sessionStorage.getItem('currentUser')); 
   
     useEffect(() => {
     axios.get(`http://localhost:3001/username/${currentuser}`).then((response) => {

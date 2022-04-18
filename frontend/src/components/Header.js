@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,  useEffect} from 'react';
 import '../styles/Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCartShopping } from '@fortawesome/free-solid-svg-icons';
@@ -8,21 +8,63 @@ import { Link } from 'react-router-dom';
 function Header() {
 
   const [openBurger, setOpenBurger] = useState(false);
+  const [profile, setProfile] = useState();
+  const [cart, setCart] = useState();
 
-  var loggedinuser = sessionStorage.getItem('currentUser'); 
+  var loggedinuser = JSON.parse(sessionStorage.getItem('currentUser')); 
   console.log(loggedinuser);
 
   function clearSess() {
     localStorage.clear();
     sessionStorage.clear();
     window.alert('You have been successfully logged out.');
+    window.location.reload();
   }
 
-  const hideAdmin = (
+  const hideItem = (
     <>
     </>
   );
+
+  const profileLink = (
+    <>
+      <Link to={"/profile"} className='profileLink'>Profile</Link>
+    </>
+    );
+
+  const cartLink = (
+    <a href="/cart">
+                    <Link to={"/cart"}>
+                      <button id="cartIcon">
+                        <FontAwesomeIcon icon={faCartShopping} />
+                      </button>
+                    </Link>
+    </a>
+  );
+
   
+  useEffect(() => {
+  if (loggedinuser == "admin@admin.com") {
+      setCart(hideItem);
+  }
+  else if (loggedinuser == "no user"){
+      setCart(hideItem);
+  } else {
+      setCart(cartLink);
+  }
+  }, []);
+
+  useEffect(() => {
+  if (loggedinuser == "admin@admin.com") {
+    setProfile(hideItem);
+  }
+  else if (loggedinuser == "no user"){
+    setProfile(hideItem);
+  } else {
+    setProfile(profileLink);
+  }
+  }, []);
+ 
   return (
     <>
       <div className="headerBar">
@@ -32,39 +74,35 @@ function Header() {
 
         <div className="navBar">
           <ul className="navLinks">
-          {loggedinuser == "admin@admin.com" ? 
+          {loggedinuser === "admin@admin.com" ? 
                     <>
                     <li>
                     <Link to={"/admin"}>Admin Controls</Link>
                     </li>
                     </>
-          : hideAdmin}
+          : hideItem}
             <li>
               <Link to={"/"}>Home</Link>
             </li>
             <li>
               <Link to={"/shop"}>Shop</Link>
             </li>
-            <li>
-              <Link to={"/sell"}>Sell</Link>
-            </li>
+            {loggedinuser === "admin@admin.com" ? 
+                    <li>
+                    <Link to={"/sell"}>Sell</Link>
+                    </li>
+            : hideItem}
             <li>
               <Link to={"/login"}>Login</Link>
             </li>
             <li>
-              <Link to={"/profile"} className='profileLink'>Profile</Link>
+              {profile}
             </li>
             <li>
               <Link to={"/"} onClick={clearSess} className='logoutLink'>Logout</Link>
             </li>
           </ul>
-          <a href="/cart">
-            <Link to={"/cart"}>
-              <button id="cartIcon">
-                <FontAwesomeIcon icon={faCartShopping} />
-              </button>
-            </Link>
-          </a>
+            {cart}
             &nbsp;&nbsp;&nbsp;&nbsp;
               <button id="burgerIcon" onClick={() => setOpenBurger(!openBurger)}>
                 <FontAwesomeIcon icon={faBars} />
