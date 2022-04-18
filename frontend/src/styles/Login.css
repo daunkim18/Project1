@@ -1,0 +1,66 @@
+.loginPage {
+  margin: auto;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.loginResult {
+  padding: 15px;
+  margin: auto;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginBtn {
+    padding: 10px;
+}
+
+.loginBtn:hover {
+  background-color: black;
+  color: white;
+}
+
+a {
+    color: #75BBA7;
+  }
+  
+  a:hover {
+    color: #7AE7C7;
+  }
+
+  #uname, #pass {
+    width: 380px;
+  }
+
+  #formField {
+    width: 400px;
+    float: left;
+  }
+
+  .signupPage {
+    display: inline-flex;
+  }
+
+  #signupPic {
+    float: left;
+    margin-right: 1000px;
+  }
+
+  #clear-both {
+    clear: both;
+  }
+
+  @media (min-width: 1000px) {
+    #signupPic {
+      display: block;
+    }
+}
+
+@media (max-width: 1000px) {
+    #signupPic {
+      display: none;
+    }
+}
