@@ -1,0 +1,32 @@
+.checkoutBtn, .clearBtn {
+    padding: 10px;
+    color: white;
+    background-color:  #6C809A;
+    border: none;
+}
+
+#checkoutBtns {
+    float: right;
+}
+
+.minusBtn {
+    padding: 10px;
+    color: white;
+    background-color: #795663;
+    border: none;
+}
+
+.addBtn {
+    padding: 10px;
+    color: white;
+    background-color: #75BBA7;
+    border: none;
+}
+
+.checkoutBtn:hover, .addBtn:hover, .minusBtn:hover, .clearBtn:hover {
+    background-color: black;
+}
+
+.cartSection {
+    display: block;
+}

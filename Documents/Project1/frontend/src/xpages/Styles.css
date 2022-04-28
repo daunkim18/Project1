@@ -1,0 +1,32 @@
+.mainSpace {
+    padding: 15px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+#sideImg {
+    float: left;
+    margin-right: 100px;
+}
+
+.contactForm {
+    float: left;
+}
+
+.clear-both {
+    clear: both;
+}
+
+@media (min-width: 1000px) {
+    #sideImg {
+      display: block;
+    }
+}
+
+@media (max-width: 1000px) {
+    #sideImg {
+      display: none;
+    }
+}
